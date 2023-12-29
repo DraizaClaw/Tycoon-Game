@@ -10,14 +10,23 @@ public class Conveyor : MonoBehaviour
 
     [SerializeField] private Vector3 ConveyorDirection;
 
+    [SerializeField] private GameObject ConveyorDirectionGameobject;
+
     public List<GameObject> onConveyor;
 
-    
+
+
+    private void Awake()
+    {
+        ConveyorDirection = ConveyorDirectionGameobject.transform.position;
+    }
+
     private void Update()
     {
-        for (int i = 0; i <= onConveyor.Count -1; i++)
+        for (int i = 0; i <= onConveyor.Count - 1; i++)
         {
             onConveyor[i].GetComponent<Rigidbody>().velocity = speed * ConveyorDirection * Time.deltaTime;
+
         }
     }
     
